@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home</title>
+
+<!-- Boostrap css -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+	crossorigin="anonymous">
+	
+<!-- My own css -->
+<link rel="stylesheet" th:href="@{/css/my-style.css}">	
+
+</head>
+<body>
+
+	<nav class="navbar navbar-dark bg-primary">
+		<div class="container-fluid">
+			<a class="navbar-brand" th:href="@{/customer/list}">Gerenciador de Clientes</a>
+		
+		</div>
+	</nav>
+
+	<br/>	
+	<hr/>
+	<br/>
+	
+	<div class="container">
+
+		<div class="row">	
+			<div class="col">
+				<a th:href="@{/customer/form}"> <button type="button" class="btn btn-primary new-button">Novo Cliente</button> </a>
+			</div>
+			
+			<div class="col div-pesquisa">
+				<form class="d-flex" role="search" action="#" th:action="@{/customer/por-nome}" method="get">
+					<input class="form-control me-2 pesquisa-cliente" type="search"
+						placeholder="Pesquisar por nome" aria-label="Search" name="pesqnome">
+					<button class="btn btn-success" type="submit">Buscar</button>
+				</form>
+			</div>		
+		</div>
+		
+		<table class="table table-striped">
+			<thead class="">
+				<tr>
+					<th>Nome</th>
+					<th>Email</th>
+					<th>CPF</th>
+					<th>Ação</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="customer : ${customers}">
+					<td th:text="${customer.name}"/>
+					<td th:text="${customer.email}"/>
+					<td th:text="${customer.cpf}"/>
+					<td>
+						<a th:href="@{/customer/form-update(id=${customer.id})}"><button type="button" class="btn btn-success">Visualizar</button> </a>
+						<a th:href="@{/customer/delete(id=${customer.id})}"
+						onclick="if (!(confirm('Deseja realmente apagar esse registro?'))) return false"><button type="button" class="btn btn-danger">Excluir</button> </a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<br/>
+	<hr/>
+	
+</body>
+</html>
