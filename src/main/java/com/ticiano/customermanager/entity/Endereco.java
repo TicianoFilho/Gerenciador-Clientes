@@ -42,13 +42,11 @@ public class Endereco {
 	@Column(name = "ponto_referencia")
 	private String pontoReferencia;
 	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "customer_id", nullable = false)
 	private Customer customer;
 	
-	public Endereco() {}
-
-	
+	public Endereco() {}	
 
 	public Endereco(String cep, String logradouro, String numero, String bairro, String cidade, String uf,
 			String pontoReferencia, Customer customer) {
@@ -61,8 +59,6 @@ public class Endereco {
 		this.pontoReferencia = pontoReferencia;
 		this.customer = customer;
 	}
-
-
 
 	public int getId() {
 		return id;
