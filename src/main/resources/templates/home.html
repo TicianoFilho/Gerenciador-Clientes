@@ -22,7 +22,7 @@
 	<nav class="navbar navbar-dark bg-primary">
 		<div class="container-fluid">
 			<a class="navbar-brand" th:href="@{/customer/list}">Gerenciador de Clientes</a>
-		
+			<p class="fw-light navbar-brand" th:text="${version}" />
 		</div>
 	</nav>
 
@@ -34,7 +34,7 @@
 
 		<div class="row">	
 			<div class="col">
-				<a th:href="@{/customer/form}"> <button type="button" class="btn btn-primary new-button">Novo Cliente</button> </a>
+				<a th:href="@{/customer/form-save}"> <button type="button" class="btn btn-primary new-button">Novo Cliente</button> </a>
 			</div>
 			
 			<div class="col div-pesquisa">
@@ -46,28 +46,30 @@
 			</div>		
 		</div>
 		
-		<table class="table table-striped">
-			<thead class="">
-				<tr>
-					<th>Nome</th>
-					<th>Email</th>
-					<th>CPF</th>
-					<th>Ação</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="customer : ${customers}">
-					<td th:text="${customer.name}"/>
-					<td th:text="${customer.email}"/>
-					<td th:text="${customer.cpf}"/>
-					<td>
-						<a th:href="@{/customer/form-update(id=${customer.id})}"><button type="button" class="btn btn-success">Visualizar</button> </a>
-						<a th:href="@{/customer/delete(id=${customer.id})}"
-						onclick="if (!(confirm('Deseja realmente apagar esse registro?'))) return false"><button type="button" class="btn btn-danger">Excluir</button> </a>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		<div class="">
+			<table class="table table-striped" id="main-table">
+				<thead class="">
+					<tr>
+						<th>Nome</th>
+						<th>Email</th>
+						<th>CPF</th>
+						<th>Ação</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="customer : ${customers}">
+						<td th:text="${customer.name}" />
+						<td th:text="${customer.email}" />
+						<td th:text="${customer.cpf}" />
+						<td><a th:href="@{/customer/form-update(id=${customer.id})}"><button
+									type="button" class="btn btn-success">Visualizar</button> </a> 
+									<a th:href="@{/customer/delete(id=${customer.id})}"
+							onclick="if (!(confirm('Deseja realmente apagar esse registro?'))) return false"><button
+									type="button" class="btn btn-danger">Excluir</button> </a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 	
 	<br/>

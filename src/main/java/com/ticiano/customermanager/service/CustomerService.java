@@ -13,4 +13,5 @@ public interface CustomerService {
 	
 	public List<Customer> findAllByOrderByNameAsc();
 	public List<Customer> findByNameLike(String name);
+	public Customer findAllCustomerEndereco();
 }

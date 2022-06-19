@@ -1,11 +1,19 @@
 package com.ticiano.customermanager.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 @Table(name = "customer")
@@ -37,10 +45,14 @@ public class Customer {
 	@Column(name = "study")
 	private boolean study;
 
+	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)	
+	private List<Endereco> enderecos;
+	
 	public Customer() {}
 
-	public Customer(int id, String cpf, String name, String email, String phone, String motherName, String occupation,
-			boolean study) {
+
+	public Customer(String cpf, String name, String email, String phone, String motherName, String occupation,
+			boolean study, List<Endereco> enderecos) {
 		this.cpf = cpf;
 		this.name = name;
 		this.email = email;
@@ -48,7 +60,10 @@ public class Customer {
 		this.motherName = motherName;
 		this.occupation = occupation;
 		this.study = study;
+		this.enderecos = enderecos;
 	}
+
+
 
 	public int getId() {
 		return id;
@@ -112,6 +127,14 @@ public class Customer {
 
 	public void setStudy(boolean study) {
 		this.study = study;
+	}
+	
+	public List<Endereco> getEnderecos() {
+		return enderecos;
+	}
+
+	public void setEnderecos(List<Endereco> enderecos) {
+		this.enderecos = enderecos;
 	}
 
 	@Override

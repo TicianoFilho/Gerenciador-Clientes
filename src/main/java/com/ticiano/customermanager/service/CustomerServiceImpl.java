@@ -12,19 +12,18 @@ import com.ticiano.customermanager.dao.CustomerRepository;
 import com.ticiano.customermanager.entity.Customer;
 
 @Service
+@Transactional
 public class CustomerServiceImpl implements CustomerService {
 
 	@Autowired
 	private CustomerRepository customerRepository;
 	
 	@Override
-	@Transactional
 	public List<Customer> findAll() {
 		return customerRepository.findAll();
 	}
 
 	@Override
-	@Transactional
 	public Customer findById(int theId) {
 		
 		Customer customer = null;
@@ -40,7 +39,6 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	@Transactional
 	public void save(Customer theCustomer) {
 		customerRepository.save(theCustomer);
 	}
@@ -59,6 +57,11 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public List<Customer> findByNameLike(String theName) {
 		return customerRepository.findByNameLike(theName);
+	}
+
+	@Override
+	public Customer findAllCustomerEndereco() {
+		return customerRepository.findAllCustomerEndereco();
 	}
 
 }
