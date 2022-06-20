@@ -22,13 +22,16 @@
     <nav class="navbar navbar-dark bg-primary">
 		<div class="container-fluid">
 			<a class="navbar-brand" th:href="@{/customer/list}">Gerenciador de Clientes</a>
-			<form class="d-flex" role="search">
-				<input class="form-control me-2" type="search" placeholder="Digite o nome"
-					aria-label="Search">
-				<button class="btn btn-success" type="submit">Buscar</button>
-			</form>
+			<p class="fw-light navbar-brand" th:text="${version}" />
 		</div>
 	</nav>
+	
+	<br/>	
+	<hr/>
+	<br/>
+	
+	<div class="container">
+	</div>
     
 </body>
 </html>

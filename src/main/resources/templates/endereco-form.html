@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer</title>
+    
+    <!-- Boostrap css -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+	crossorigin="anonymous">
+	
+<!-- My own css -->
+<link rel="stylesheet" th:href="@{/css/my-style.css}">	
+    
+</head>
+<body>
+    
+    <nav class="navbar navbar-dark bg-primary">
+		<div class="container-fluid">
+			<a class="navbar-brand" th:href="@{/customer/list}">Gerenciador de Clientes</a>
+			<p class="fw-light navbar-brand" th:text="${version}" />
+		</div>
+	</nav>
+	
+	<br/>	
+	<hr/>
+	<br/>
+	
+	<div class="container">
+		<form class="row g-3" action="#" th:action="@{/endereco/save}" method="post" th:object="${endereco}">
+			<input type="hidden" id="enderecoCustId" name="enderecoCustId" />
+			<div class="col-md-4">
+				<label for="inputCep" class="form-label">CEP</label> <input
+					type="text" class="form-control" id="inputCep" th:field="*{cep}">
+			</div>
+			<div class="col-md-9">
+				<label for="inputLogradouro" class="form-label">Logradouro</label> <input
+					type="text" class="form-control" id="inputLogradouro"
+					th:field="*{logradouro}">
+			</div>
+			<div class="col-3">
+				<label for="inputNumero" class="form-label">Número</label> <input
+					type="text" class="form-control" id="inputNumero"
+					th:field="*{numero}">
+			</div>
+			<div class="col-6">
+				<label for="inputBairro" class="form-label">Bairro</label> <input
+					type="text" class="form-control" id="inputBairro"
+					th:field="*{bairro}">
+			</div>
+			<div class="col-md-6">
+				<label for="inputCidade" class="form-label">Cidade</label> <input
+					type="text" class="form-control" id="inputCidade"
+					th:field="*{cidade}">
+			</div>
+			<div class="col-md-4">
+				<label for="inputUf" class="form-label">UF</label> <input
+					type="text" class="form-control" id="inputUf" th:field="*{uf}">
+			</div>
+			<div class="col-md-12">
+				<label for="inputPontoReferencia" class="form-label">Ponto
+					de Referência</label> <input type="text" class="form-control"
+					id="inputPontoReferencia">
+			</div>
+
+			<div class="modal-footer">
+				<a th:href="@{/customer/form-update(id=${customerid})}"><button type="button" class="btn btn-secondary">Voltar</button>
+				<button type="submit" class="btn btn-primary"
+					id="gravar-endereco-btn" onclick="getCustomerId()">Gravar</button>
+			</div>
+		</form>
+	</div>
+    
+</body>
+</html>

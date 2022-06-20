@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,11 +25,14 @@ public class EnderecoController {
 	@Autowired
 	private CustomerService customerService;
 	
-	@GetMapping("/form")
-	public String showForm(Model model) {
+	@GetMapping("/form-save")
+	public String showForm(@RequestParam(name = "customerid") int customerid, Model model) {
 		Endereco endereco = new Endereco();
+	
 		model.addAttribute("endereco", endereco);
-		return "customer-form";
+		model.addAttribute("customerid", customerid);
+		
+		return "endereco-form";
 	}
 	
 	@GetMapping("/get")

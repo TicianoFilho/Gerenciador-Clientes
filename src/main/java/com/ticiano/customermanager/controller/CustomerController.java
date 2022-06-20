@@ -46,10 +46,8 @@ public class CustomerController {
 	public String showCustomerForm(Model model) {
 		
 		Customer customer = new Customer();
-		Endereco endereco = new Endereco();
 		
 		model.addAttribute("customer", customer);
-		model.addAttribute("endereco", endereco);
 		model.addAttribute("version", projectInfo.getSystemVersion());
 		
 		return "customer-form";
@@ -60,10 +58,8 @@ public class CustomerController {
 		
 		Customer customer = customerService.findById(theId);
 		
-		Endereco endereco = new Endereco();
-		
 		model.addAttribute("customer", customer);
-		model.addAttribute("endereco", endereco);
+
 		model.addAttribute("version", projectInfo.getSystemVersion());
 		
 		return "customer-form";
