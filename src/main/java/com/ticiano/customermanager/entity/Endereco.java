@@ -48,8 +48,9 @@ public class Endereco {
 	
 	public Endereco() {}	
 
-	public Endereco(String cep, String logradouro, String numero, String bairro, String cidade, String uf,
+	public Endereco(int id, String cep, String logradouro, String numero, String bairro, String cidade, String uf,
 			String pontoReferencia, Customer customer) {
+		this.id = id;
 		this.cep = cep;
 		this.logradouro = logradouro;
 		this.numero = numero;
@@ -134,8 +135,9 @@ public class Endereco {
 
 	@Override
 	public String toString() {
-		return "Endereco [id=" + id + ", cep=" + cep + ", logradouro=" + logradouro + ", bairro=" + bairro + ", cidade="
-				+ cidade + ", uf=" + uf + "]";
+		return "Endereco [id=" + id + ", cep=" + cep + ", logradouro=" + logradouro + ", numero=" + numero + ", bairro="
+				+ bairro + ", cidade=" + cidade + ", uf=" + uf + ", pontoReferencia=" + pontoReferencia + ", customer="
+				+ customer + "]";
 	}
 	
 	

@@ -31,7 +31,7 @@
 	<br/>
 	
 	<div class="container">
-		<form class="row g-3" action="#" th:action="@{/endereco/save}" method="post" th:object="${endereco}">
+		<form class="row g-3" action="#" th:action="@{/endereco/save(customerId=${customerId})}" method="post" th:object="${endereco}">
 			<input type="hidden" id="enderecoCustId" name="enderecoCustId" />
 			<div class="col-md-4">
 				<label for="inputCep" class="form-label">CEP</label> <input
@@ -64,13 +64,14 @@
 			<div class="col-md-12">
 				<label for="inputPontoReferencia" class="form-label">Ponto
 					de Referência</label> <input type="text" class="form-control"
-					id="inputPontoReferencia">
+					id="inputPontoReferencia" th:field="*{pontoReferencia}">
 			</div>
 
 			<div class="modal-footer">
-				<a th:href="@{/customer/form-update(id=${customerid})}"><button type="button" class="btn btn-secondary">Voltar</button>
-				<button type="submit" class="btn btn-primary"
-					id="gravar-endereco-btn" onclick="getCustomerId()">Gravar</button>
+				<a th:href="@{/customer/form-update(customerId=${customerId})}">
+					<button type="button" class="btn btn-secondary">Voltar</button>
+				</a>
+				<button type="submit" class="btn btn-primary" id="gravar-endereco-btn">Gravar</button>
 			</div>
 		</form>
 	</div>

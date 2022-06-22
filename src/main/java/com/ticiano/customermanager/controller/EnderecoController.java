@@ -26,11 +26,21 @@ public class EnderecoController {
 	private CustomerService customerService;
 	
 	@GetMapping("/form-save")
-	public String showForm(@RequestParam(name = "customerid") int customerid, Model model) {
+	public String showForm(@RequestParam("customerId") int customerId, Model model) {
 		Endereco endereco = new Endereco();
 	
 		model.addAttribute("endereco", endereco);
-		model.addAttribute("customerid", customerid);
+		model.addAttribute("customerId", customerId);
+		
+		return "endereco-form";
+	}
+	
+	@GetMapping("/form-update")
+	public String showEnderecoForm(@RequestParam("enderecoId") int enderecoId, Model model) {
+		Endereco endereco = enderecoService.findById(enderecoId);
+		
+		model.addAttribute("endereco", endereco);
+		model.addAttribute("customerId", endereco.getCustomer().getId());
 		
 		return "endereco-form";
 	}
@@ -44,14 +54,17 @@ public class EnderecoController {
 	}
 	
 	@PostMapping("/save")
-	public String save(@RequestParam("enderecoCustId") int customerId, @ModelAttribute("endereco") Endereco theEndereco) {
-		System.out.println(customerId);
+	public String save(@RequestParam("customerId") int customerId, @ModelAttribute("endereco") Endereco theEndereco, Model model) {
 		Customer customer = customerService.findById(customerId);
 		theEndereco.setCustomer(customer);
 		
+		System.out.println(theEndereco);
+		
 		enderecoService.save(theEndereco);
 		
-		return "redirect:/customer/list";
+		model.addAttribute("customerId", customerId);
+		
+		return "endereco-form";
 	}
 	
 	@GetMapping("delete")

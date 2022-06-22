@@ -54,7 +54,7 @@ public class CustomerController {
 	}
 	
 	@GetMapping("/form-update")
-	public String formUpdate(@RequestParam("id") int theId, Model model) {
+	public String formUpdate(@RequestParam("customerId") int theId, Model model) {
 		
 		Customer customer = customerService.findById(theId);
 		

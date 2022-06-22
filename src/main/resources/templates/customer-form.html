@@ -79,7 +79,7 @@
 		<br/>
 		<div class="d-flex justify-content-between p-3 mb-2 bg-light text-dark">
 			<p class="fs-5 float-left">Endereço(s)</p>
-			<a th:href="@{/endereco/form-save(customerid=${customer.id})}">
+			<a th:href="@{/endereco/form-save(customerId=${customer.id})}">
 				<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#enderecoModal" 
 				type="button">Novo Endereço</button>
 			</a>
@@ -105,7 +105,7 @@
 					<td th:text="${endereco.cidade}"/>
 					<td th:text="${endereco.cep}"/>
 					<td>
-						<a th:href="@{/test}">
+						<a th:href="@{/endereco/form-update(enderecoId=${endereco.id})}">
 							<button class="btn btn-success">Visualizar</button>
 						</a>
 						<a th:href="@{/test}">
@@ -116,6 +116,11 @@
 				
 			</tbody>
 		</table>
+
+		<div class="modal-footer">
+			<a th:href="@{/customer/list}"><button type="button" class="btn btn-secondary">Voltar para lista</button>
+		</div>
+
 	</div>
 
 	<br/>

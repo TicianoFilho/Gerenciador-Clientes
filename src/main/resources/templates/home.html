@@ -61,9 +61,9 @@
 						<td th:text="${customer.name}" />
 						<td th:text="${customer.email}" />
 						<td th:text="${customer.cpf}" />
-						<td><a th:href="@{/customer/form-update(id=${customer.id})}"><button
+						<td><a th:href="@{/customer/form-update(customerId=${customer.id})}"><button
 									type="button" class="btn btn-success">Visualizar</button> </a> 
-									<a th:href="@{/customer/delete(id=${customer.id})}"
+									<a th:href="@{/customer/delete(customerId=${customer.id})}"
 							onclick="if (!(confirm('Deseja realmente apagar esse registro?'))) return false"><button
 									type="button" class="btn btn-danger">Excluir</button> </a></td>
 					</tr>
