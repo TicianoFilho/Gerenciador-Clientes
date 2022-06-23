@@ -108,8 +108,8 @@
 						<a th:href="@{/endereco/form-update(enderecoId=${endereco.id})}">
 							<button class="btn btn-success">Visualizar</button>
 						</a>
-						<a th:href="@{/test}">
-							<button class="btn btn btn-danger">Exluir</button>
+						<a th:href="@{/endereco/delete(enderecoId=${endereco.id})}">
+							<button class="btn btn btn-danger" onclick="if(!(confirm('Deseja realmente excluir este endereço?'))){ return false}">Exluir</button>
 						</a>
 					</td>
 				</tr>

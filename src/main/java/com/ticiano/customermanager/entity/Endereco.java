@@ -42,7 +42,8 @@ public class Endereco {
 	@Column(name = "ponto_referencia")
 	private String pontoReferencia;
 	
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, 
+			fetch = FetchType.LAZY)
 	@JoinColumn(name = "customer_id", nullable = false)
 	private Customer customer;
 	

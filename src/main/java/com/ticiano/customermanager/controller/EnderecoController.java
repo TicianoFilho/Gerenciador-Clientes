@@ -69,8 +69,10 @@ public class EnderecoController {
 	
 	@GetMapping("delete")
 	public String deleteById(@RequestParam(name = "enderecoId") int enderecoId, Model model) {
-		enderecoService.deleteById(enderecoId);
-		return "/customer/formm-update";
+		Endereco endereco = enderecoService.findById(enderecoId);
+		enderecoService.deleteById(endereco.getId());
+		return String.format("redirect:/customer/form-update?customerId=%s", endereco.getCustomer().getId());
 	}
+	
 
 }
