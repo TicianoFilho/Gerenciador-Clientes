@@ -68,9 +68,9 @@ public class EnderecoController {
 	}
 	
 	@GetMapping("delete")
-	public String deleteById(@RequestParam(name = "id") int theId, Model model) {
-		enderecoService.deleteById(theId);
-		return "redirect:/customer/form";
+	public String deleteById(@RequestParam(name = "enderecoId") int enderecoId, Model model) {
+		enderecoService.deleteById(enderecoId);
+		return "/customer/formm-update";
 	}
 
 }
